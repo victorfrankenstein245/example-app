@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_example/screens/Constants.dart';
 import 'package:websafe_svg/websafe_svg.dart';
 
+import '../Constants.dart';
+import '../Constants.dart';
+
 class WelcomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -34,7 +37,17 @@ class WelcomeScreen extends StatelessWidget {
                     ),
                   ),
                 ),
-                Spacer()
+                Spacer(),
+                Container(
+                  padding: EdgeInsets.all(kDefaultPadding * 0.75), //15
+                  decoration: BoxDecoration(
+                    gradient: kPrimaryGradient,
+                    borderRadius: BorderRadius.all(
+                      Radius.circular(12),
+                    ),
+                  ),
+                ),
+                Spacer(),
               ],
             ),
           ),

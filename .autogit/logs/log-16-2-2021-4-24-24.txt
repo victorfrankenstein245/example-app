@@ -1,13 +1,13 @@
--------------------- update home screen --------------------
-		Tue Mar 16 2021 03:22:48 GMT+0100 (West Africa Standard Time)
+-------------------- Auto-Git Log --------------------
+		Tue Mar 16 2021 04:24:24 GMT+0100 (West Africa Standard Time)
 ------------------------------------------------------
 
 Modified files:
 * lib/screens/welcome/Welcome_screen.dart
-* pubspec.lock
 
 
 Created files:
+* .autogit/logs/log-16-2-2021-3-53-38.txt
 
 
 Deleted files:

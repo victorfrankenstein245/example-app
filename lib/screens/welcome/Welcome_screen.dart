@@ -22,14 +22,14 @@ class WelcomeScreen extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Spacer(),
+                Spacer(flex: 2), // will take 2/6 space
                 Text(
                   "lets play a game",
                   style: Theme.of(context).textTheme.headline4.copyWith(
                       color: Colors.white, fontWeight: FontWeight.bold),
                 ),
                 Text("enter ur information below"),
-                Spacer(),
+                Spacer(), // will take 1/6 space
 
                 // input text field
                 TextField(
@@ -42,26 +42,29 @@ class WelcomeScreen extends StatelessWidget {
                     ),
                   ),
                 ),
-                Spacer(),
-                Container(
-                  width: double.infinity,
-                  alignment: Alignment.center,
-                  padding: EdgeInsets.all(kDefaultPadding * 0.85), //15
-                  decoration: BoxDecoration(
-                    gradient: kPrimaryGradient,
-                    borderRadius: BorderRadius.all(
-                      Radius.circular(12),
+                Spacer(), // will take 1/6 space
+                InkWell(
+                  onTap: () {},
+                  child: Container(
+                    width: double.infinity,
+                    alignment: Alignment.center,
+                    padding: EdgeInsets.all(kDefaultPadding * 0.85), //15
+                    decoration: BoxDecoration(
+                      gradient: kPrimaryGradient,
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(12),
+                      ),
+                    ),
+                    child: Text(
+                      'Lets get started',
+                      style: Theme.of(context)
+                          .textTheme
+                          .button
+                          .copyWith(color: Colors.black),
                     ),
                   ),
-                  child: Text(
-                    'Lets get started',
-                    style: Theme.of(context)
-                        .textTheme
-                        .button
-                        .copyWith(color: Colors.black),
-                  ),
                 ),
-                Spacer(),
+                Spacer(flex: 2), //it willtake 2/6 space
               ],
             ),
           ),

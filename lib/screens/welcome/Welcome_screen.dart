@@ -3,14 +3,19 @@ import 'package:flutter_example/screens/Constants.dart';
 import 'package:websafe_svg/websafe_svg.dart';
 
 import '../Constants.dart';
-import '../Constants.dart';
+// import '../Constants.dart';
 
 class WelcomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Stack(children: [
-        WebsafeSvg.asset("assets/icons/bg.svg"),
+        WebsafeSvg.asset(
+          "assets/icons/bg.svg",
+          width: MediaQuery.of(context).size.width,
+          // height: MediaQuery.of(context).size.height,
+          fit: BoxFit.cover,
+        ),
         SafeArea(
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: kDefaultPadding),
@@ -39,12 +44,21 @@ class WelcomeScreen extends StatelessWidget {
                 ),
                 Spacer(),
                 Container(
-                  padding: EdgeInsets.all(kDefaultPadding * 0.75), //15
+                  width: double.infinity,
+                  alignment: Alignment.center,
+                  padding: EdgeInsets.all(kDefaultPadding * 0.85), //15
                   decoration: BoxDecoration(
                     gradient: kPrimaryGradient,
                     borderRadius: BorderRadius.all(
                       Radius.circular(12),
                     ),
+                  ),
+                  child: Text(
+                    'Lets get started',
+                    style: Theme.of(context)
+                        .textTheme
+                        .button
+                        .copyWith(color: Colors.black),
                   ),
                 ),
                 Spacer(),

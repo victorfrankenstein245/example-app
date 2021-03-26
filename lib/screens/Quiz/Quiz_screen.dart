@@ -1,29 +1,31 @@
+import 'package:websafe_svg/websafe_svg.dart';
 import 'package:flutter/material.dart';
-class  extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      child: Column(children: [
-        Text("second page")
-      ],),
-    );
-  }
-}
 
-class  extends StatelessWidget {
+class QuizScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      
-    );
-  }
-}
-
-class  extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      
+    return Scaffold(
+      appBar: AppBar(
+        //textbutton shows the back buton automatically
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        actions: [
+          TextButton(
+            onPressed: () {},
+            child: Text("skip"),
+          ),
+        ],
+      ),
+      body: Stack(
+        children: [
+          WebsafeSvg.asset(
+            "assets/icons/bg.svg",
+            width: MediaQuery.of(context).size.width,
+            // height: MediaQuery.of(context).size.height,
+            fit: BoxFit.cover,
+          ),
+        ],
+      ),
     );
   }
 }

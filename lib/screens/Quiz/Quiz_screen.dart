@@ -1,5 +1,5 @@
 import 'package:flutter_example/screens/Quiz/components/body.dart';
-import 'package:websafe_svg/websafe_svg.dart';
+// import 'package:websafe_svg/websafe_svg.dart';
 import 'package:flutter/material.dart';
 
 class QuizScreen extends StatelessWidget {

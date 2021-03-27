@@ -22,7 +22,9 @@ class Body extends StatelessWidget {
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: kDefaultPadding),
             child: Column(
-              children: [ProgressBar()],
+              children: [
+                ProgressBar(),
+              ],
             ),
           ),
         )

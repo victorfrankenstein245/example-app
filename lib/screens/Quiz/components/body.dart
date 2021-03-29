@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_example/controllers/question_controller.dart';
 import 'package:flutter_example/models/Questions.dart';
 import 'package:flutter_example/screens/Constants.dart';
+import 'package:flutter_example/screens/Quiz/components/question_card.dart';
+import 'package:get/get.dart';
 import 'package:websafe_svg/websafe_svg.dart';
 
 import 'progress_bar.dart';
@@ -12,6 +15,8 @@ class Body extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // so that we have access our controller
+    QuestionController _questioncontroller = Get.put(QuestionController());
     return Stack(
       children: [
         WebsafeSvg.asset(
@@ -20,17 +25,22 @@ class Body extends StatelessWidget {
           fit: BoxFit.cover,
         ),
         SafeArea(
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: kDefaultPadding),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                ProgressBar(),
-                SizedBox(
-                  height: kDefaultPadding,
-                ),
-                //question header on 10 starts here
-                Text.rich(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Padding(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: kDefaultPadding),
+                child: ProgressBar(),
+              ),
+              SizedBox(
+                height: kDefaultPadding,
+              ),
+              //question header on 10 starts here
+              Padding(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: kDefaultPadding),
+                child: Text.rich(
                   TextSpan(
                     text: "Question 1",
                     style: Theme.of(context)
@@ -47,12 +57,21 @@ class Body extends StatelessWidget {
                     ],
                   ),
                 ),
-                Divider(thickness: 1.5),
-                SizedBox(height: kDefaultPadding),
-                // end here
-                QuestionCard(),
-              ],
-            ),
+              ),
+              Divider(thickness: 1.5),
+              SizedBox(height: kDefaultPadding),
+              // end here
+              //slider effect
+              Expanded(
+                child: PageView.builder(
+                  itemCount: _questioncontroller.questions.length,
+                  itemBuilder: (context, index) => QuestionCard(
+                    question: _questioncontroller.questions[index],
+                  ),
+                ),
+              ),
+              //end slider
+            ],
           ),
         )
       ],
@@ -60,38 +79,38 @@ class Body extends StatelessWidget {
   }
 }
 
-class QuestionCard extends StatelessWidget {
-  const QuestionCard({
-    Key key,
-  }) : super(key: key);
+// class QuestionCard extends StatelessWidget {
+//   const QuestionCard({
+//     Key key,
+//   }) : super(key: key);
 
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.all(kDefaultPadding),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(25),
-      ),
-      child: Column(
-        children: [
-          Text(
-            sample_data[0]["question"],
-            style: Theme.of(context)
-                .textTheme
-                .headline6
-                .copyWith(color: kBlsckColor),
-          ),
-          SizedBox(height: kDefaultPadding / 2),
-          Option(),
-          Option(),
-          Option(),
-          Option(),
-        ],
-      ),
-    );
-  }
-}
+//   @override
+//   Widget build(BuildContext context) {
+//     return Container(
+//       padding: EdgeInsets.all(kDefaultPadding),
+//       decoration: BoxDecoration(
+//         color: Colors.white,
+//         borderRadius: BorderRadius.circular(25),
+//       ),
+//       child: Column(
+//         children: [
+//           Text(
+//             sample_data[0]["question"],
+//             style: Theme.of(context)
+//                 .textTheme
+//                 .headline6
+//                 .copyWith(color: kBlsckColor),
+//           ),
+//           SizedBox(height: kDefaultPadding / 2),
+//           Option(),
+//           Option(),
+//           Option(),
+//           Option(),
+//         ],
+//       ),
+//     );
+//   }
+// }
 
 class Option extends StatelessWidget {
   const Option({

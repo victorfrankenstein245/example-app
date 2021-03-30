@@ -21,12 +21,26 @@ class QuestionController extends GetxController
         (question) => Question(
             id: question["id"],
             question: question["question"],
-            options: question["option"],
+            options: question["options"],
             answer: question["answer_index"]),
       )
       .toList();
 
   List<Question> get questions => this._questions;
+  bool _isAnswered = false;
+  bool get isAnswered => this._isAnswered;
+
+  int _correctAns;
+  int get correctAns => this._correctAns;
+
+  int _selectedAns;
+  int get selectedAns => this._selectedAns;
+  //for more about ops chack documantation
+  RxInt _questionNumber = 1.obs;
+  RxInt get questionNumber => this._questionNumber;
+
+  int _numOfCorrectAns = 0;
+  int get numOfCorrectAns => this._numOfCorrectAns;
 
 //called immediately after the widget allocates memory
   @override
@@ -44,5 +58,17 @@ class QuestionController extends GetxController
     //start our aniation
     _animationController.forward();
     super.onInit();
+  }
+
+  void checkAns(Question question, int selectedIndex) {
+    //becaus wen user press an obtion then it will run
+    _isAnswered = true;
+    _correctAns = question.answer;
+    _selectedAns = selectedIndex;
+
+    if (_correctAns == _selectedAns) _numOfCorrectAns++;
+    //it will stop the counter
+    _animationController.stop();
+    update();
   }
 }

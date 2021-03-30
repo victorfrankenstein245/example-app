@@ -3,6 +3,7 @@ import 'package:flutter_example/models/Questions.dart';
 
 import '../../Constants.dart';
 import 'body.dart';
+import 'option.dart';
 
 class QuestionCard extends StatelessWidget {
   const QuestionCard(
@@ -25,7 +26,7 @@ class QuestionCard extends StatelessWidget {
       child: Column(
         children: [
           Text(
-            sample_data[0]["question"],
+            question.question,
             style: Theme.of(context)
                 .textTheme
                 .headline6
